@@ -4,6 +4,7 @@
  */
 
 var map = require('array-map');
+var indexOf = require('indexof');
 var isArray = require('isarray');
 var forEach = require('foreach');
 var objectKeys = require('object-keys');
@@ -215,7 +216,7 @@ function formatValue(ctx, value, recurseTimes) {
   // IE doesn't make error fields non-enumerable
   // http://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx
   if (isError(value)
-      && (keys.indexOf('message') >= 0 || keys.indexOf('description') >= 0)) {
+      && (indexOf(keys, 'message') >= 0 || indexOf(keys, 'description') >= 0)) {
     return formatError(value);
   }
 
@@ -314,7 +315,7 @@ function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
     name = '[' + key + ']';
   }
   if (!str) {
-    if (ctx.seen.indexOf(desc.value) < 0) {
+    if (indexOf(ctx.seen, desc.value) < 0) {
       if (isNull(recurseTimes)) {
         str = formatValue(ctx, desc.value, null);
       } else {
