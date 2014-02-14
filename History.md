@@ -1,4 +1,9 @@
 
+0.1.6 / 2014-02-14
+==================
+
+ * index: fix usage of `Array#reduce` for old browsers
+
 0.1.5 / 2014-02-14
 ==================
 
