@@ -3,6 +3,7 @@
  * Module dependencies.
  */
 
+var map = require('array-map');
 var isArray = require('isarray');
 var forEach = require('foreach');
 var objectKeys = require('object-keys');
@@ -278,7 +279,7 @@ function formatValue(ctx, value, recurseTimes) {
   if (array) {
     output = formatArray(ctx, value, recurseTimes, visibleKeys, keys);
   } else {
-    output = keys.map(function(key) {
+    output = map(keys, function(key) {
       return formatProperty(ctx, value, recurseTimes, visibleKeys, key, array);
     });
   }
@@ -314,11 +315,11 @@ function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
       }
       if (str.indexOf('\n') > -1) {
         if (array) {
-          str = str.split('\n').map(function(line) {
+          str = map(str.split('\n'), function(line) {
             return '  ' + line;
           }).join('\n').substr(2);
         } else {
-          str = '\n' + str.split('\n').map(function(line) {
+          str = '\n' + map(str.split('\n'), function(line) {
             return '   ' + line;
           }).join('\n');
         }

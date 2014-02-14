@@ -6,6 +6,7 @@
     "isarray": "0.0.1",
     "object-keys": "0.5.0",
     "json3": "3.3.0",
-    "foreach": "2.0.4"
+    "foreach": "2.0.4",
+    "array-map": "0.0.0"
   }
 }
