@@ -15,3 +15,7 @@ With browserify or node:
 var inspect = require('util-inspect');
 console.log(inspect({}));
 ```
+
+## License
+
+MIT – Copyright (c) 2010-2014 Joyent, Inc.
