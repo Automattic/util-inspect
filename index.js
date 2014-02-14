@@ -4,6 +4,7 @@
  */
 
 var isArray = require('isarray');
+var forEach = require('foreach');
 var objectKeys = require('object-keys');
 var JSON = require('json3');
 
@@ -145,7 +146,7 @@ function objectToString(o) {
 function arrayToHash(array) {
   var hash = {};
 
-  array.forEach(function(val, idx) {
+  forEach(array, function(val, idx) {
     hash[val] = true;
   });
 
@@ -162,7 +163,7 @@ function formatArray(ctx, value, recurseTimes, visibleKeys, keys) {
       output.push('');
     }
   }
-  keys.forEach(function(key) {
+  forEach(keys, function(key) {
     if (!key.match(/^\d+$/)) {
       output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
           key, true));
