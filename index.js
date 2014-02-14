@@ -8,8 +8,21 @@ var indexOf = require('indexof');
 var isArray = require('isarray');
 var forEach = require('foreach');
 var reduce = require('array-reduce');
-var objectKeys = require('object-keys');
+var getObjectKeys = require('object-keys');
 var JSON = require('json3');
+
+/**
+ * Make sure `Object.keys` work for `undefined`
+ * values that are still there, like `document.all`.
+ * http://lists.w3.org/Archives/Public/public-html/2009Jun/0546.html
+ *
+ * @api private
+ */
+
+function objectKeys(val){
+  if (Object.keys) return Object.keys(val);
+  return getObjectKeys(val);
+}
 
 /**
  * Module exports.
