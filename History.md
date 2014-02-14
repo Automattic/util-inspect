@@ -1,4 +1,10 @@
 
+0.1.4 / 2014-02-14
+==================
+
+ * index: make `getOwnPropertyNames` and `getOwnPropertyDescriptor`
+   optional for old browsers
+
 0.1.3 / 2014-02-14
 ==================
 
