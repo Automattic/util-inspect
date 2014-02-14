@@ -7,6 +7,7 @@ var map = require('array-map');
 var indexOf = require('indexof');
 var isArray = require('isarray');
 var forEach = require('foreach');
+var reduce = require('array-reduce');
 var objectKeys = require('object-keys');
 var JSON = require('json3');
 
@@ -375,7 +376,7 @@ function formatPrimitive(ctx, value) {
 
 function reduceToSingleString(output, base, braces) {
   var numLinesEst = 0;
-  var length = output.reduce(function(prev, cur) {
+  var length = reduce(output, function(prev, cur) {
     numLinesEst++;
     if (cur.indexOf('\n') >= 0) numLinesEst++;
     return prev + cur.replace(/\u001b\[\d\d?m/g, '').length + 1;

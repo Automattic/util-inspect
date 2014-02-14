@@ -8,6 +8,7 @@
     "json3": "3.3.0",
     "foreach": "2.0.4",
     "array-map": "0.0.0",
-    "indexof": "0.0.1"
+    "indexof": "0.0.1",
+    "array-reduce": "0.0.0"
   }
 }
