@@ -1,4 +1,9 @@
 
+0.1.2 / 2014-02-14
+==================
+
+ * index: added support for Array#forEach on older browsers
+
 0.1.1 / 2014-02-14
 ==================
 
