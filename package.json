@@ -1,6 +1,6 @@
 {
   "name": "util-inspect",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "cross-browser node.js `util.inspect`",
   "dependencies": {
     "isarray": "0.0.1",
