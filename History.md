@@ -1,4 +1,9 @@
 
+0.1.3 / 2014-02-14
+==================
+
+ * index: add support for Array#map on older browsers
+
 0.1.2 / 2014-02-14
 ==================
 
