@@ -37,7 +37,7 @@ function inspect(obj, opts) {
     ctx.showHidden = opts;
   } else if (opts) {
     // got an "options" object
-    exports._extend(ctx, opts);
+    _extend(ctx, opts);
   }
   // set default options
   if (isUndefined(ctx.showHidden)) ctx.showHidden = false;
@@ -152,7 +152,7 @@ function formatValue(ctx, value, recurseTimes) {
       value &&
       isFunction(value.inspect) &&
       // Filter out the util module, it's inspect function is special
-      value.inspect !== exports.inspect &&
+      value.inspect !== inspect &&
       // Also filter out any prototype objects using the circular check.
       !(value.constructor && value.constructor.prototype === value)) {
     var ret = value.inspect(recurseTimes, ctx);
@@ -351,4 +351,16 @@ function reduceToSingleString(output, base, braces) {
   }
 
   return braces[0] + base + ' ' + output.join(', ') + ' ' + braces[1];
+}
+
+function _extend(origin, add) {
+  // Don't do anything if add isn't an object
+  if (!add || !isObject(add)) return origin;
+
+  var keys = objectKeys(add);
+  var i = keys.length;
+  while (i--) {
+    origin[keys[i]] = add[keys[i]];
+  }
+  return origin;
 }
