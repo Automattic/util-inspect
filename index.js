@@ -310,7 +310,14 @@ function formatValue(ctx, value, recurseTimes) {
 
 function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
   var name, str, desc;
-  desc = { value: value[key] };
+  desc = { value: void 0 };
+  try {
+    // ie6 › navigator.toString
+    // throws Error: Object doesn't support this property or method
+    desc.value = value[key];
+  } catch (e) {
+    // ignore
+  }
   try {
     // ie10 › Object.getOwnPropertyDescriptor(window.location, 'hash')
     // throws TypeError: Object doesn't support this action
