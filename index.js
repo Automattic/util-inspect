@@ -219,8 +219,12 @@ function formatValue(ctx, value, recurseTimes) {
   var keys = objectKeys(value);
   var visibleKeys = arrayToHash(keys);
 
-  if (ctx.showHidden && Object.getOwnPropertyNames) {
-    keys = Object.getOwnPropertyNames(value);
+  try {
+    if (ctx.showHidden && Object.getOwnPropertyNames) {
+      keys = Object.getOwnPropertyNames(value);
+    }
+  } catch (e) {
+    // ignore
   }
 
   // IE doesn't make error fields non-enumerable
@@ -307,8 +311,14 @@ function formatValue(ctx, value, recurseTimes) {
 function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
   var name, str, desc;
   desc = { value: value[key] };
-  if (Object.getOwnPropertyDescriptor) {
-    desc = Object.getOwnPropertyDescriptor(value, key) || desc;
+  try {
+    // ie10 › Object.getOwnPropertyDescriptor(window.location, 'hash')
+    // throws TypeError: Object doesn't support this action
+    if (Object.getOwnPropertyDescriptor) {
+      desc = Object.getOwnPropertyDescriptor(value, key) || desc;
+    }
+  } catch (e) {
+    // ignore
   }
   if (desc.get) {
     if (desc.set) {
