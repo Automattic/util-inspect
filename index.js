@@ -219,8 +219,12 @@ function formatValue(ctx, value, recurseTimes) {
   var keys = objectKeys(value);
   var visibleKeys = arrayToHash(keys);
 
-  if (ctx.showHidden && Object.getOwnPropertyNames) {
-    keys = Object.getOwnPropertyNames(value);
+  try {
+    if (ctx.showHidden && Object.getOwnPropertyNames) {
+      keys = Object.getOwnPropertyNames(value);
+    }
+  } catch (e) {
+    // ignore
   }
 
   // IE doesn't make error fields non-enumerable
