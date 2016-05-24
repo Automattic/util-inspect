@@ -2,6 +2,7 @@
   "name": "util-inspect",
   "version": "0.1.8",
   "description": "cross-browser node.js `util.inspect`",
+  "repository": "Automattic/util-inspect",
   "dependencies": {
     "isarray": "0.0.1",
     "object-keys": "0.5.0",
